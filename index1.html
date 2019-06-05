@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>piska</title>
+  </head>
+  <body style="background-image: url(bg.jpg);background-size:100%">
+    <h1 style="position:absolute;">Очки:</h1><h1 class="scoore" style="position:absolute;margin-left:100px">0</h1>
+    <h1 style="position:absolute;margin-left:140px">Жуки:</h1><h1 class="juki" style="position:absolute;margin-left:250px">0</h1>
+  <script>
+    let score = 0
+    let score1 = 0
+     let func = function(arg) { //функция с аргументом
+   		let rand = Math.random()*arg
+        let round = Math.round(rand)
+		return round;
+		}
+    	
+         
+    let create= function(){
+      let newImg = document.createElement('img');
+       document.body.appendChild(newImg)
+       score1 = score1 + 1
+       document.querySelector(".juki").innerHTML = score1
+       newImg.src = "img.svg"
+       newImg.style.height = "100px"
+       newImg.style.width = "100px";
+       newImg.style.marginLeft = func(1400)+"px";
+       newImg.style.position = "absolute";
+       newImg.style.marginTop = func(600)+"px";
+       newImg.onclick = function(){
+       newImg.style.display = "none"
+       score = score + 1
+       document.querySelector(".scoore").innerHTML = score
+       score1 = score1 - 1
+       document.querySelector(".juki").innerHTML = score1
+
+       }
+      
+    }
+    let push =  setInterval(create,500)
+    let proverka = function() {
+      if (score1>=14) {
+        alert("you lose");
+        clearInterval(push)
+       for(let index = 0; index<20; index = index + 1){//цикл
+			push(index).style.display = "none"
+		}
+    } 
+    else{
+      alert("you win");
+       clearInterval(push)
+       for(let index = 0; index<20; index = index + 1){//цикл
+			push(index).style.display = "none"
+		}
+    }
+    }
+    setTimeout(proverka,10000)
+  
+  
+    
+     
+
+  </script>
+  </body>
+</html>
